@@ -1,0 +1,5 @@
+ここはユーザーのマイページです</br>
+<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></br>
+<%= @user.name %></br>
+<%= @user.introduction %></br>
+<%= link_to "登録情報編集",edit_user_path %>

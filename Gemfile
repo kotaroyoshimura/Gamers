@@ -63,3 +63,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # デバイスの設定
 gem'devise'
+
+# refile refile-mini-magickの設定
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
