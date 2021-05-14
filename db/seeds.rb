@@ -10,5 +10,10 @@
 User.create!(
   name:'ゲーム太郎',
   email:'taro@game.com',
-  password:'123456',
+  password:'123456'
+  )
+  
+
+Genre.create!(
+  name:'RPG'
   )

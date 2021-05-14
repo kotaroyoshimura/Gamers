@@ -1,0 +1,5 @@
+タイトル:<%= @game.title %></br>
+投稿ユーザー名:<%= @game.user.name %></br>
+ジャンル:<%= @game.genre.name %></br>
+本文：<%= @game.body %></br>
+<%= link_to "編集",edit_game_path(@game)%>
