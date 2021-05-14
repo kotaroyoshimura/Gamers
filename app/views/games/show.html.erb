@@ -2,4 +2,12 @@
 投稿ユーザー名:<%= @game.user.name %></br>
 ジャンル:<%= @game.genre.name %></br>
 本文：<%= @game.body %></br>
-<%= link_to "編集",edit_game_path(@game)%>
+<%= link_to "編集",edit_game_path(@game)%></br>
+<% @comments.each do |comment| %>
+投稿者名：<%= comment.user.name %></br>
+コメント内容：<%= comment.body %></br>
+<% end %>
+<%= form_with(model:[@game,@comment],local:true) do |f| %>
+<%= f.text_area :body %></br>
+<%= f.submit"コメントする" %>
+<% end %>
