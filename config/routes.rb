@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get 'users/:id/unsubscribe' => 'users#unsubscribe',as: 'user_unsubscribe'
   devise_for :users
   resources :users, only:[:show,:edit,:update]
+  resources :games, only:[:new,:create,:show,:edit,:update]
 end
