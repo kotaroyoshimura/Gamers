@@ -6,6 +6,7 @@
 <% @comments.each do |comment| %>
 投稿者名：<%= comment.user.name %></br>
 コメント内容：<%= comment.body %></br>
+<%= link_to "削除する",game_comment_path(@game,comment),method: :delete %></br>
 <% end %>
 <%= form_with(model:[@game,@comment],local:true) do |f| %>
 <%= f.text_area :body %></br>
