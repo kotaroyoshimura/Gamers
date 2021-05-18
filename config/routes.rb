@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to:'homes#top'
+  get '/search' => 'search#search'
   get 'about' => 'homes#about'
   get 'users/:id/unsubscribe' => 'users#unsubscribe',as: 'user_unsubscribe'
   post 'favorite/:id' => 'favorites#create', as: 'create_favorite'
