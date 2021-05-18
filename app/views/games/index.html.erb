@@ -1,0 +1,11 @@
+<% @game.each do |game| %>
+<% if current_user.favorited_by?(game.id) %>
+<%= link_to 'いいね外す',destroy_favorite_path(game),method: :DELETE %> <%= game.favorites.count %></br>
+<% else %>
+<%= link_to 'いいねする',create_favorite_path(game),method: :POST %> <%= game.favorites.count %></br>
+<% end %>
+<%= game.title %></br>
+<%= game.user.name %></br>
+<%= game.genre.name %></br>
+<%= game.body %></br>
+<% end %>

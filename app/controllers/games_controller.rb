@@ -1,5 +1,9 @@
 class GamesController < ApplicationController
 
+  def index
+    @game = Game.all
+  end
+
   def show
     @game = Game.find(params[:id])
     @comment = Comment.new
@@ -14,7 +18,7 @@ class GamesController < ApplicationController
     @game = Game.new(game_params)
     @game.user = current_user
     @game.save
-    redirect_to user_path(current_user.id)
+    redirect_to games_path
   end
 
   def edit
