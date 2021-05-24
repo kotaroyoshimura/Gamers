@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  #ログイン前の行動を制限
+  before_action :authenticate_user!,except: [:top,:about]
   # デバイスにnameを許可
   before_action :configure_permitted_parameters, if: :devise_controller?
   # ログイン後の推移先を変更

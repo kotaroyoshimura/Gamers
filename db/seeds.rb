@@ -12,8 +12,48 @@ User.create!(
   email:'taro@game.com',
   password:'123456'
   )
-  
+
 
 Genre.create!(
   name:'RPG'
+  )
+
+Genre.create!(
+  name:'シューティング'
+  )
+
+Genre.create!(
+  name:'ボード'
+  )
+
+Genre.create!(
+  name:'オープンワールド'
+  )
+
+Genre.create!(
+  name:'スポーツ'
+  )
+
+Genre.create!(
+  name:'音楽'
+  )
+
+Genre.create!(
+  name:'レース'
+  )
+
+Genre.create!(
+  name:'パズル'
+  )
+
+Genre.create!(
+  name:'アドベンチャー'
+  )
+
+Genre.create!(
+  name:'アクション'
+  )
+
+Genre.create!(
+  name:'シュミレーション'
   )
