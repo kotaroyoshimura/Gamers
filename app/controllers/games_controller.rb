@@ -6,6 +6,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    @user = @game.user
     @comment = Comment.new
     @comments = @game.comments
   end
@@ -29,6 +30,12 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @game.update(game_params)
     redirect_to game_path(@game.id)
+  end
+
+  def destroy
+    @game = Game.find(params[:id])
+    @game.destroy
+    redirect_to games_path
   end
 
   private
