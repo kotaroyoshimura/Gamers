@@ -1,0 +1,68 @@
+<p id="notice"></p>
+<% if @model == "user" %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="py-3"><%= @value %>の検索結果：<%= @datas.count %>件見つかりました！</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th width="15%"></th>
+            <th width="15%">ユーザー名</th>
+            <th width="70%">自己紹介</th>
+          </tr>
+        </thead>
+        <% @datas.each do |user| %>
+        <tbody>
+          <tr>
+            <td><%= attachment_image_tag(user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40') %></td>
+            <td>
+            <%= link_to user_path(user) do %>
+              <%= user.name %>
+            <% end %>
+            </td>
+            <td><%= user.introduction %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+<% elsif @model == "game" %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="py-3"><%= @value %>の検索結果：<%= @datas.count %>件見つかりました！</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th width="15%">投稿ユーザー名</th>
+            <th width="15%">タイトル</th>
+            <th width="10%">ジャンル</th>
+            <th width="60%">本文</th>
+          </tr>
+        </thead>
+        <% @datas.each do |game| %>
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to user_path(game.user) do %>
+                <%= game.user.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to game_path(game) do %>
+                <%= game.title %>
+              <% end %>
+            </td>
+            <td><%= game.genre.name %></td>
+            <td><%= game.body %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+<% end %>

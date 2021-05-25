@@ -1,0 +1,106 @@
+<p id="notice"></p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 pb-5">
+      <h3>投稿詳細</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <h4>投稿ユーザー情報</h4>
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+          </tr>
+          <tr>
+            <td>名前：<%= @user.name %></td>
+          </tr>
+          <tr>
+            <td>自己紹介：</td>
+          </tr>
+          <tr>
+            <td><%= @user.introduction %></td>
+          </tr>
+          <tr>
+            <td>
+              <% if @user == current_user %>
+              <%= link_to "登録情報編集",edit_user_path,class:'btn btn-success' %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-9">
+      <h4>投稿内容</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th width="20%">タイトル</th>
+            <th width="15%">ジャンル</th>
+            <th width="25%">本文</th>
+            <th width="5%"></th>
+            <th width="15%"></th>
+            <th width="10%"></th>
+            <th width="10%"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @game.title %></td>
+            <td><%= @game.genre.name %></td>
+            <td><%= @game.body %></td>
+            <td>
+              <% if current_user.favorited_by?(@game.id) %>
+                <%= link_to '🖤',destroy_favorite_path(@game),method: :DELETE %><%= @game.favorites.count %>
+              <% else %>
+                <%= link_to '🤍',create_favorite_path(@game),method: :POST %><%= @game.favorites.count %>
+              <% end %>
+            </td>
+            <td>コメント数：<%= @game.comments.count %></td>
+            <% if @game.user == current_user %>
+            <td><%= link_to "編集",edit_game_path(@game),class:'btn btn-sm btn-primary'%></td>
+            <td><%= link_to "削除",game_path(@game),method: :delete, "data-confirm" => "削除してもよろしいですか？",class:'btn btn-sm btn-danger' %></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+      <h4>コメント一覧</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th width="20%">ユーザー名</th>
+            <th width="70%">コメント</th>
+            <th width="10%"></th>
+          </tr>
+        </thead>
+        <% @comments.each do |comment| %>
+        <tbody>
+          <tr>
+            <td><%= comment.user.name %></td>
+            <td><%= comment.body %></td>
+            <td><%= link_to "削除する",game_comment_path(@game,comment),method: :delete,class:'btn btn-danger' %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-md-3">
+      <h4>コメントする</h4>
+      <table class="table table-borderless">
+        <%= form_with(model:[@game,@comment],local:true) do |f| %>
+        <tbody>
+          <tr>
+            <td><%= f.text_area :body %></td>
+          </tr>
+          <tr>
+            <td><%= f.submit"コメントする" %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-md-9"></div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<p id="notice"></p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-11">
+      <h4>ログイン</h4>
+    </div>
+  </div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td width="30%">メールアドレス</td>
+            <td width="30%"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+            <td width="40%"></td>
+          </tr>
+          <tr>
+            <td>パスワード</td>
+            <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><%= f.submit "ログイン",class:"btn btn-success btn-sm" %></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-6"></div>
+  </div>
+  <% end %>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-11">
+      <p>まだ登録されていない方は<%= render "devise/shared/links" %>から新規登録</p>
+    </div>
+  </div>
+</div>
