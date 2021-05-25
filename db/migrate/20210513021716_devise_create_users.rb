@@ -35,7 +35,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       # 名前、プロフィール画像カラムの設定
       t.string :name,null: false
       t.string :profile_image_id
-      t.text :introduction,default: "よろしくお願いします！"
+      t.text :introduction
 
       t.timestamps null: false
     end
