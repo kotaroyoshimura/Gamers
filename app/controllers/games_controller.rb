@@ -6,6 +6,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    game = @game
     @user = @game.user
     @comment = Comment.new
     @comments = @game.comments
