@@ -1,0 +1,5 @@
+<% if current_user.favorited_by?(game.id) %>
+  <%= link_to '🖤',destroy_favorite_path(game),method: :DELETE,remote: true %><%= game.favorites.count %>
+<% else %>
+  <%= link_to '🤍',create_favorite_path(game),method: :POST,remote: true %><%= game.favorites.count %>
+<% end %>

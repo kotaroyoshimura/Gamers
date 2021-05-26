@@ -33,12 +33,8 @@
             </td>
             <td><%= game.genre.name %></td>
             <td><%= game.body %></td>
-            <td>
-              <% if current_user.favorited_by?(game.id) %>
-                <%= link_to '🖤',destroy_favorite_path(game),method: :DELETE %><%= game.favorites.count %>
-              <% else %>
-                <%= link_to '🤍',create_favorite_path(game),method: :POST %><%= game.favorites.count %>
-              <% end %>
+            <td class="game_<%= game.id %>">
+              <%= render 'favorites/favorite', game: game %>
             </td>
             <td>コメント数：<%= game.comments.count %></td>
           </tr>
