@@ -1,4 +1,4 @@
-class GamesController < ApplicationController
+class Users::GamesController < ApplicationController
 
   def index
     @game = Game.all
@@ -6,7 +6,6 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    game = @game
     @user = @game.user
     @comment = Comment.new
     @comments = @game.comments

@@ -52,7 +52,7 @@
             <td><%= @game.genre.name %></td>
             <td><%= @game.body %></td>
             <td class="game_<%= @game.id %>">
-              <%= render 'favorites/favorite', game: @game %>
+              <%= render 'users/favorites/favorite', game: @game %>
             </td>
             <td>コメント数：<%= @game.comments.count %></td>
             <% if @game.user == current_user %>

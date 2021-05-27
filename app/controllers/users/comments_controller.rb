@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class Users::CommentsController < ApplicationController
 
   def create
     game = Game.find(params[:game_id])
