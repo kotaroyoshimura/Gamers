@@ -18,4 +18,8 @@ Rails.application.routes.draw do
       resources :comments, only:[:create,:destroy]
     end
   end
+
+  scope module: :admins do
+    resources :genres, only:[:index,:create,:edit,:update,:destroy]
+  end
 end
