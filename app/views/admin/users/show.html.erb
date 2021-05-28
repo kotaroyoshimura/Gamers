@@ -1,0 +1,57 @@
+<p id="notice"></p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 my-5">
+      <h3><%= @user.name %>さんのマイページ</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <h4>ユーザー情報</h4>
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+          </tr>
+          <tr>
+            <td>名前：<%= @user.name %></td>
+          </tr>
+          <tr>
+            <td>自己紹介：</td>
+          </tr>
+          <tr>
+            <td><%= @user.introduction %></td>
+          </tr>
+          <tr>
+            <td><%= link_to "登録情報編集",edit_admin_user_path,class:'btn btn-success' %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-9">
+      <h4>投稿一覧</h4>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th width="20%" class="text-center">タイトル</th>
+            <th width="20%" class="text-center">ジャンル</th>
+            <th width="60%" class="text-center">本文</th>
+          </tr>
+        </thead>
+        <% @game.each do |g| %>
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to game_path(g.id) do %>
+              <%= g.title %>
+              <% end %>
+            </td>
+            <td><%= g.genre.name %></td>
+            <td><%= g.body %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

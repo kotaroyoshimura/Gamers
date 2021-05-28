@@ -43,10 +43,10 @@
               </li>
               <% elsif admin_signed_in? %>
               <li class="nav-item">
-                <%= link_to "ユーザー一覧",new_game_path,class:'nav-link text-dark' %>
+                <%= link_to "ユーザー一覧",admin_users_path,class:'nav-link text-dark' %>
               </li>
               <li class="nav-item">
-                <%= link_to "ジャンル一覧",genres_path,class:'nav-link text-dark' %>
+                <%= link_to "ジャンル一覧",admin_genres_path,class:'nav-link text-dark' %>
               </li>
               <li class="nav-item">
                 <%= link_to "投稿一覧",games_path,class:'nav-link text-dark' %>
