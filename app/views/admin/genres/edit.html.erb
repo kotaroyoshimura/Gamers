@@ -7,7 +7,7 @@
     <div class="col-md-3">
       <table class="table table-borderless">
         <tbody>
-          <%= form_with model:@genre,local:true do |f| %>
+          <%= form_with model:@genre,url:admins_genre_path,local:true do |f| %>
           <tr>
             <td><%= f.text_field:name,autofocus: true %></td>
           </tr>

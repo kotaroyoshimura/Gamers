@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :admins, controllers: {
-    sessions: 'admins/sessions'
+    sessions: 'admin/sessions'
   }
   devise_for :users, controllers: {
     sessions: 'users/sessions',
@@ -19,7 +19,8 @@ Rails.application.routes.draw do
     end
   end
 
-  scope module: :admins do
+  namespace :admin do
+    resources :users, only:[:index,:show,:edit,:update]
     resources :genres, only:[:index,:create,:edit,:update,:destroy]
   end
 end
