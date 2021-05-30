@@ -13,6 +13,11 @@ User.create!(
   password:'123456'
   )
 
+#管理者の初期データ格納
+Admin.create!(
+  email:'admin@game.com',
+  password:'123456'
+  )
 
 Genre.create!(
   name:'RPG'

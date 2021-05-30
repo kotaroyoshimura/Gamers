@@ -1,0 +1,46 @@
+<p id="notice"></p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 py-2">
+      <h3>投稿一覧</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 px-5">
+      <table class="table">
+        <thead>
+          <tr>
+            <th width="20%">タイトル</th>
+            <th width="15%">投稿ユーザー</th>
+            <th width="15%">ジャンル</th>
+            <th width="35%">本文</th>
+            <th width="5%"></th>
+            <th width="10%"></th>
+          </tr>
+        </thead>
+        <% @game.each do |game| %>
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to game_path(game.id) do %>
+                <%= game.title %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to user_path(game.user.id) do %>
+               <%= game.user.name %>
+              <% end %>
+            </td>
+            <td><%= game.genre.name %></td>
+            <td><%= game.body %></td>
+            <td class="game_<%= game.id %>">
+              <%= render 'users/favorites/favorite', game: game %>
+            </td>
+            <td>コメント数：<%= game.comments.count %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
