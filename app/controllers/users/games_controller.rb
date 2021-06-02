@@ -17,6 +17,7 @@ class Users::GamesController < ApplicationController
 
   def create
     @game = Game.new(game_params)
+    @game.score = Language.get_data(game_params[:body])  #この行を追加
     @game.user = current_user
     @game.save
     redirect_to games_path

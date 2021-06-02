@@ -13,7 +13,7 @@
             <th width="20%">タイトル</th>
             <th width="15%">投稿ユーザー</th>
             <th width="15%">ジャンル</th>
-            <th width="35%">本文</th>
+            <th width="35%">本文[感情分析点]</th>
             <th width="5%"></th>
             <th width="10%"></th>
           </tr>
@@ -32,7 +32,7 @@
               <% end %>
             </td>
             <td><%= game.genre.name %></td>
-            <td><%= game.body %></td>
+            <td><%= game.body %>[<%= game.score %>]</td>
             <td class="game_<%= game.id %>">
               <%= render 'users/favorites/favorite', game: game %>
             </td>
