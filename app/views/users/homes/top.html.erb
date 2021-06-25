@@ -1,3 +1,6 @@
+<%= flash[:success] %>
+<%= flash[:alert] %>
+<p id="notice"></p>
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12" style="height: 200px;"></div>
@@ -9,6 +12,9 @@
         このサイトでは遊んだゲームの感想を投稿できます！</br>
         ご利用には会員登録が必要です
       </p>
+      <% unless user_signed_in? %>
+       <p class="text-center"><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post,class:'btn btn-lg btn-primary' %></p>
+      <% end %>
     </div>
   </div>
   <div class="row">
