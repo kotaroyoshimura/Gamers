@@ -1,7 +1,13 @@
 <p id="notice"></p>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-11 py-5">
+    <div class="col-md-11">
+      <% if @game.errors.any? %>
+        <h5>エラーが発生しました。</h5>
+        <% @game.errors.full_messages.each do |message| %>
+          <li><%= message %></li></br>
+        <% end %>
+      <% end %>
       <h3>新規投稿</h3>
     </div>
   </div>
