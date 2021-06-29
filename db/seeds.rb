@@ -8,8 +8,8 @@
 
 #ユーザーの初期データの格納
 User.create!(
-  name:'ゲーム太郎',
-  email:'taro@game.com',
+  name: ENV['ゲーム太郎'],
+  email: 'taro@game.com',
   password:'123456'
   )
 
