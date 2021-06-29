@@ -19,8 +19,11 @@ class Users::GamesController < ApplicationController
     @game = Game.new(game_params)
     @game.score = Language.get_data(game_params[:body])  #この行を追加
     @game.user = current_user
-    @game.save
-    redirect_to games_path
+    if @game.save
+      redirect_to games_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -29,8 +32,11 @@ class Users::GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
-    @game.update(game_params)
-    redirect_to game_path(@game.id)
+    if @game.update(game_params)
+      redirect_to game_path(@game.id)
+    else
+      render :edit
+    end
   end
 
   def destroy

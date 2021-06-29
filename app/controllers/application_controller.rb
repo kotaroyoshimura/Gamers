@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     if user_signed_in?
       user_path(current_user.id)
     elsif admin_signed_in?
-      games_path
+      admin_games_path
     end
   end
   # 新規登録後の推移先を変更
