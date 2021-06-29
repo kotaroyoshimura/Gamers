@@ -84,18 +84,18 @@
     </div>
     <div class="col-md-3">
       <h4>コメントする</h4>
-      <table class="table table-borderless">
-        <%= form_with(model:[@game,@comment],local:true) do |f| %>
-        <tbody>
-          <tr>
-            <td><%= f.text_area :body %></td>
-          </tr>
-          <tr>
-            <td><%= f.submit"コメントする" %></td>
-          </tr>
-        </tbody>
-        <% end %>
-      </table>
+      <%= form_with(model:[@game,@comment],local:true) do |f| %>
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <td><%= f.text_area :body %></td>
+            </tr>
+            <tr>
+              <td><%= f.submit"コメントする" %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
     </div>
     <div class="col-md-9"></div>
   </div>
