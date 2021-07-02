@@ -8,15 +8,15 @@
 
 #ユーザーの初期データの格納
 User.create!(
-  name: ENV['ゲーム太郎'],
-  email: 'taro@game.com',
-  password:'123456'
+  name: ENV['User_Name'],
+  email: ENV['User_Email'],
+  password: ENV['User_Password']
   )
 
 #管理者の初期データ格納
 Admin.create!(
-  email:'admin@game.com',
-  password:'123456'
+  email: ENV['Admin_Email'],
+  password: ENV['Admin_Password']
   )
 
 Genre.create!(
