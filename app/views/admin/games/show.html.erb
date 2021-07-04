@@ -1,0 +1,80 @@
+<p id="notice"></p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 pb-5">
+      <h3>投稿詳細</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <h4>投稿ユーザー情報</h4>
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+          </tr>
+          <tr>
+            <td>名前：<%= @user.name %></td>
+          </tr>
+          <tr>
+            <td>自己紹介：</td>
+          </tr>
+          <tr>
+            <td><%= @user.introduction %></td>
+          </tr>
+          <tr>
+            <td>
+              <%= link_to "登録情報編集",edit_user_path,class:'btn btn-success' %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-9">
+      <h4>投稿内容</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th width="20%">タイトル</th>
+            <th width="15%">ジャンル</th>
+            <th width="25%">本文</th>
+            <th width="10%"></th>
+            <th width="14%"></th>
+            <th width="8%"></th>
+            <th width="8%"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @game.title %></td>
+            <td><%= @game.genre.name %></td>
+            <td><%= @game.body %></td>
+            <td>いいね数：<%= @game.favorites.count %></td>
+            <td>コメント数：<%= @game.comments.count %></td>
+            <td></td>
+            <td><%= link_to "削除",game_path(@game),method: :delete, "data-confirm" => "削除してもよろしいですか？",class:'btn btn-sm btn-danger' %></td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>コメント一覧</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th width="20%">ユーザー名</th>
+            <th width="70%">コメント</th>
+            <th width="10%"></th>
+          </tr>
+        </thead>
+        <% @comments.each do |comment| %>
+        <tbody>
+          <tr>
+            <td><%= comment.user.name %></td>
+            <td><%= comment.body %></td>
+            <td><%= link_to "削除する",game_comment_path(@game,comment),method: :delete,class:'btn btn-danger' %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
