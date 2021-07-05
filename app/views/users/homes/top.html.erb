@@ -13,7 +13,7 @@
         ご利用には会員登録が必要です
       </p>
       <% unless user_signed_in? %>
-       <p class="text-center"><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post,class:'btn btn-lg btn-primary' %></p>
+        <p class="text-center"><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post,class:'btn btn-lg btn-primary' %></p>
       <% end %>
     </div>
   </div>
